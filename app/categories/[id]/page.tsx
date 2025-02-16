@@ -8,7 +8,6 @@ import path from 'path'
 import { Metadata } from 'next'
 import React from 'react'
 import { Category, Product } from '@/app/lib/types'
-import Link from 'next/link'
 
 interface MDXFrontmatter extends Omit<Category, 'id'> {
   products: Product[]
