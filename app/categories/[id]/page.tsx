@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { notFound } from 'next/navigation'
 import { getAllCategories } from '@/app/lib/categories'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import fs from 'fs'
 import path from 'path'
 import { Metadata } from 'next'
+import React from 'react'
 
 interface MDXFrontmatter {
   title: string
@@ -28,23 +31,19 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function CategoryPage({
-  params,
-}: {
-  params: { id: string }
-}) {
-  const { id } = params
-  const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
+export default async function CategoryPage(props: any) {
+  const { id } = props.params;
+  const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`);
 
   if (!fs.existsSync(filePath)) {
-    notFound()
+    notFound();
   }
 
-  const fileContent = fs.readFileSync(filePath, 'utf8')
+  const fileContent = fs.readFileSync(filePath, 'utf8');
   const { content, frontmatter } = await compileMDX<MDXFrontmatter>({
     source: fileContent,
     options: { parseFrontmatter: true }
-  })
+  });
 
   return (
     <div className="space-y-8">
@@ -58,7 +57,7 @@ export default async function CategoryPage({
       <div className="rounded-lg border border-gray-200 bg-white p-6">
         <h2 className="mb-4 text-lg font-semibold">Price Ranges</h2>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-4">
-          {Object.entries(frontmatter.priceRanges).map(([tier, range]: [string, string]) => (
+          {Object.entries(frontmatter.priceRanges).map(([tier, range]) => (
             <div key={tier} className="rounded-lg border border-gray-200 p-3">
               <span className="font-medium">{tier}</span>
               <span className="ml-2 text-gray-600">{range}</span>
@@ -71,5 +70,5 @@ export default async function CategoryPage({
         {content}
       </div>
     </div>
-  )
+  );
 } 
