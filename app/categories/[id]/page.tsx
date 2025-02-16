@@ -3,6 +3,7 @@ import { getAllCategories } from '@/app/lib/categories'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import fs from 'fs'
 import path from 'path'
+import { Metadata } from 'next'
 
 interface MDXFrontmatter {
   title: string
@@ -12,6 +13,14 @@ interface MDXFrontmatter {
   priceRanges: Record<string, string>
 }
 
+export const metadata: Metadata = {
+  title: 'Category | Buy It For Life',
+  description: 'Product recommendations that last a lifetime',
+}
+
+export const dynamic = 'force-static'
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   const categories = await getAllCategories()
   return categories.map((category) => ({
@@ -19,14 +28,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export const dynamic = 'force-static'
-export const dynamicParams = false
-
-async function CategoryPage({
-  params,
-}: {
-  params: { id: string }
-}) {
+export default async function CategoryPage({ params }: { params: { id: string } }) {
   const { id } = params
   const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
 
@@ -66,6 +68,4 @@ async function CategoryPage({
       </div>
     </div>
   )
-}
-
-export default CategoryPage 
+} 
