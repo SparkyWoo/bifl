@@ -128,7 +128,7 @@ export default async function CategoryPage({ params }: PageProps) {
                   Price
                 </th>
                 <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Why It's BIFL
+                  Why It&apos;s BIFL
                 </th>
                 <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-24">
                   Buy
