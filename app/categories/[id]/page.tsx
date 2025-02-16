@@ -102,18 +102,10 @@ export default async function CategoryPage({ params }: PageProps) {
       <div className="mb-6 pb-4 border-b">
         <div className="flex items-baseline justify-between">
           <h1 className="text-xl font-medium tracking-tight text-gray-900">{content.title}</h1>
-          <div className="text-xs text-gray-500 tabular-nums">
-            {Object.entries(content.priceRanges).map(([tier, range]) => (
-              <span key={tier} className="ml-3 first:ml-0">
-                <span className="font-medium">{tier}</span>
-                <span className="ml-1 text-gray-400">{range}</span>
-              </span>
-            ))}
-          </div>
+          <p className="text-xs text-gray-500">
+            Last updated: {new Date(content.lastUpdated).toLocaleDateString()}
+          </p>
         </div>
-        <p className="mt-1 text-xs text-gray-500">
-          Last updated: {new Date(content.lastUpdated).toLocaleDateString()}
-        </p>
       </div>
 
       <div className="bg-white border border-gray-200 rounded-md overflow-hidden">
@@ -123,8 +115,8 @@ export default async function CategoryPage({ params }: PageProps) {
               <th scope="col" className="py-2 pl-4 pr-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wide w-64">
                 Product
               </th>
-              <th scope="col" className="px-2 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wide w-20">
-                Price
+              <th scope="col" className="px-2 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wide w-32">
+                Price Range
               </th>
               <th scope="col" className="px-2 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">
                 Why It&apos;s BIFL
@@ -140,9 +132,11 @@ export default async function CategoryPage({ params }: PageProps) {
                 <td className="py-2.5 pl-4 pr-2">
                   <div className="font-medium text-sm text-gray-900">{product.name}</div>
                 </td>
-                <td className="px-2 py-2.5 tabular-nums">
-                  <div className="text-xs font-medium text-gray-700">{product.priceTier}</div>
-                  <div className="text-xs text-gray-500">{product.priceRange}</div>
+                <td className="px-2 py-2.5">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-xs font-medium text-blue-600">{product.priceTier}</span>
+                    <span className="text-xs text-gray-500">{product.priceRange}</span>
+                  </div>
                 </td>
                 <td className="px-2 py-2.5">
                   <div className="text-xs text-gray-600 line-clamp-2">
