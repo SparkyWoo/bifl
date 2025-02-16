@@ -101,7 +101,12 @@ export default async function Page({ params }: PageProps) {
     <div className="max-w-7xl space-y-4">
       <div className="mb-2">
         <h1 className="text-xl font-bold text-gray-900">{content.title}</h1>
-        <p className="text-sm text-gray-600">{content.description}</p>
+        <p className="text-sm text-gray-600">
+          {content.description}
+          <span className="text-gray-400 ml-2">
+            · Updated {new Date(content.lastUpdated).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+          </span>
+        </p>
       </div>
 
       <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
