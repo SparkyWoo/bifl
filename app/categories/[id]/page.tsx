@@ -19,11 +19,15 @@ export async function generateStaticParams() {
   }))
 }
 
-interface Props {
-  params: { id: string }
+type PageParams = {
+  id: string
 }
 
-export default async function CategoryPage({ params }: Props) {
+export default async function CategoryPage({
+  params,
+}: {
+  params: PageParams
+}) {
   const { id } = params
   const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
 
