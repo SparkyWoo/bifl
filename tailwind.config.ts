@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        sans: ['var(--font-jakarta)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-instrument)', 'system-ui', 'sans-serif'],
       },
       typography: {
         DEFAULT: {
@@ -24,13 +24,13 @@ const config: Config = {
               },
             },
             h1: {
-              fontFamily: 'var(--font-fraunces)',
+              fontFamily: 'var(--font-instrument)',
             },
             h2: {
-              fontFamily: 'var(--font-fraunces)',
+              fontFamily: 'var(--font-instrument)',
             },
             h3: {
-              fontFamily: 'var(--font-fraunces)',
+              fontFamily: 'var(--font-instrument)',
             },
           },
         },

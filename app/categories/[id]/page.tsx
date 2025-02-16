@@ -100,10 +100,10 @@ export default async function Page({ params }: PageProps) {
   return (
     <div className="max-w-7xl space-y-4">
       <div className="mb-2">
-        <h1 className="text-xl font-serif font-bold text-gray-900 tracking-tight">{content.title}</h1>
-        <p className="text-sm text-gray-600 font-sans">
+        <h1 className="text-xl font-display font-medium text-gray-900 tracking-tight">{content.title}</h1>
+        <p className="text-sm text-gray-600">
           {content.description}
-          <span className="text-gray-400 ml-2 font-light">
+          <span className="text-gray-400 ml-2">
             · Updated {new Date(content.lastUpdated).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
           </span>
         </p>
@@ -130,20 +130,20 @@ export default async function Page({ params }: PageProps) {
               {content.products?.map((product) => (
                 <tr key={product.name} className="hover:bg-gray-50/50">
                   <td className="px-3 py-2 truncate">
-                    <div className="font-serif font-medium text-gray-900 text-sm truncate">
+                    <div className="font-display font-medium text-gray-900 text-sm truncate">
                       {product.name}
                     </div>
                   </td>
                   <td className="px-3 py-2">
                     <div className="text-sm">
                       <span className="font-medium text-blue-600">{product.priceTier}</span>
-                      <span className="text-xs text-gray-500 ml-1 font-light">
+                      <span className="text-xs text-gray-500 ml-1">
                         {product.priceRange}
                       </span>
                     </div>
                   </td>
                   <td className="px-3 py-2">
-                    <p className="text-sm text-gray-600 line-clamp-1 hover:line-clamp-none font-light">
+                    <p className="text-sm text-gray-600 line-clamp-1 hover:line-clamp-none">
                       {product.whyBifl}
                     </p>
                   </td>

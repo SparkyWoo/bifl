@@ -1,19 +1,19 @@
 import * as React from 'react'
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Plus_Jakarta_Sans, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { getAllCategories } from "./lib/categories";
 import Link from "next/link";
 import { CategoryListClient } from "./components/CategoryList";
 
-const inter = Inter({ 
+const jakarta = Plus_Jakarta_Sans({ 
   subsets: ["latin"],
-  variable: '--font-inter',
+  variable: '--font-jakarta',
 });
 
-const fraunces = Fraunces({
+const instrument = Instrument_Sans({
   subsets: ["latin"],
-  variable: '--font-fraunces',
+  variable: '--font-instrument',
 });
 
 export const metadata: Metadata = {
@@ -36,12 +36,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable} font-sans antialiased`}>
+    <html lang="en" className={`${jakarta.variable} ${instrument.variable} font-sans antialiased`}>
       <body className="min-h-screen bg-gray-50 text-gray-900 text-sm">
         <div className="min-h-screen flex flex-col">
           <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
             <div className="mx-auto px-4 py-3">
-              <h1 className="text-lg font-serif tracking-tight text-gray-900">
+              <h1 className="text-lg font-display tracking-tight text-gray-900">
                 <Link href="/" className="hover:text-gray-600 transition-colors">
                   Buy It For Life
                 </Link>
