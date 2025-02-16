@@ -28,12 +28,11 @@ export async function generateStaticParams() {
   }))
 }
 
-type Props = {
+export default async function CategoryPage({
+  params,
+}: {
   params: { id: string }
-  searchParams: Record<string, string | string[] | undefined>
-}
-
-export default async function CategoryPage({ params }: Props) {
+}) {
   const { id } = params
   const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
 
