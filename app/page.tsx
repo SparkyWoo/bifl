@@ -2,12 +2,6 @@
 
 import * as React from 'react'
 import { motion } from 'framer-motion'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
 
 function BackgroundGradient() {
   return (
@@ -74,7 +68,7 @@ export default function HomePage() {
             animate="visible"
             className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm"
           >
-            {features.map((feature, i) => (
+            {features.map((feature) => (
               <div
                 key={feature.title}
                 className="p-6 bg-white/50 backdrop-blur-sm border border-gray-200/50 rounded-lg"
