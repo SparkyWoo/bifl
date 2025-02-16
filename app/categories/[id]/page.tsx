@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import * as React from 'react'
 import { notFound } from 'next/navigation'
 import { getAllCategories } from '../../lib/categories'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import fs from 'node:fs'
 import path from 'node:path'
 import { Metadata } from 'next'
-import React from 'react'
 import { Category, Product } from '../../lib/types'
 
 interface MDXFrontmatter extends Omit<Category, 'id'> {
@@ -98,81 +98,67 @@ export default async function CategoryPage({ params }: PageProps) {
   }
 
   return (
-    <div className="max-w-4xl space-y-6">
-      <div>
-        <h1 className="text-xl font-medium text-gray-900">{content.title}</h1>
-        <p className="text-sm text-gray-500 mt-1">
-          Last updated: {new Date(content.lastUpdated).toLocaleDateString()}
-        </p>
-      </div>
-
-      <div className="bg-white border border-gray-200 rounded-md p-4">
-        <h2 className="text-sm font-medium text-gray-900 mb-3">Price Ranges</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-medium text-gray-900">{content.title}</h1>
+          <p className="text-sm text-gray-500">
+            Last updated: {new Date(content.lastUpdated).toLocaleDateString()}
+          </p>
+        </div>
+        <div className="text-sm text-gray-500">
           {Object.entries(content.priceRanges).map(([tier, range]) => (
-            <div key={tier} className="bg-gray-50 rounded-md px-3 py-2 text-sm">
-              <span className="font-medium text-gray-900">{tier}</span>
-              <span className="ml-2 text-gray-600">{range}</span>
+            <div key={tier} className="inline-flex items-center ml-4 first:ml-0">
+              <span className="font-medium">{tier}</span>
+              <span className="ml-1 text-gray-400">{range}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-md overflow-hidden">
+      <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200" role="table" aria-label="Products in category">
+          <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                {['Product Name', 'Price Tier', 'Price Range', 'Why It&apos;s BIFL', 'Link'].map((header) => (
-                  <th 
-                    key={header}
-                    scope="col" 
-                    className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
-                  >
-                    {header}
-                  </th>
-                ))}
+                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">
+                  Product Name
+                </th>
+                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-24">
+                  Price
+                </th>
+                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Why It's BIFL
+                </th>
+                <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-24">
+                  Buy
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {content.products?.map((product) => (
                 <tr key={product.name} className="hover:bg-gray-50">
-                  <td className="px-3 py-2 text-sm font-medium text-gray-900 whitespace-nowrap">
-                    {product.name}
+                  <td className="px-4 py-4">
+                    <div className="font-medium text-gray-900">{product.name}</div>
                   </td>
-                  <td className="px-3 py-2 text-sm text-gray-500 whitespace-nowrap">
-                    {product.priceTier}
+                  <td className="px-4 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900 font-medium">{product.priceTier}</div>
+                    <div className="text-sm text-gray-500">{product.priceRange}</div>
                   </td>
-                  <td className="px-3 py-2 text-sm text-gray-500 whitespace-nowrap">
-                    {product.priceRange}
-                  </td>
-                  <td className="px-3 py-2 text-sm text-gray-500">
-                    <div className="line-clamp-3 max-w-md">
+                  <td className="px-4 py-4">
+                    <div className="text-sm text-gray-600 prose-sm max-w-none">
                       {product.whyBifl}
                     </div>
                   </td>
-                  <td className="px-3 py-2 text-sm text-gray-500 whitespace-nowrap">
-                    <a 
-                      href={product.link} 
-                      target="_blank" 
+                  <td className="px-4 py-4 text-center">
+                    <a
+                      href={product.link}
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-3 py-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
+                      className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       aria-label={`Buy ${product.name}`}
                     >
-                      <svg 
-                        className="w-4 h-4 mr-1" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth={2} 
-                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" 
-                        />
-                      </svg>
-                      Buy
+                      Buy Now
                     </a>
                   </td>
                 </tr>
