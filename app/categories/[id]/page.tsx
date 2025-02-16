@@ -98,7 +98,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="max-w-4xl space-y-8">
+    <div className="max-w-7xl space-y-8">
       <div>
         <h1 className="text-2xl font-bold text-gray-900">{content.title}</h1>
         <p className="mt-2 text-base text-gray-600">{content.description}</p>
@@ -128,13 +128,13 @@ export default async function Page({ params }: PageProps) {
           <table className="min-w-full divide-y divide-gray-200">
             <thead>
               <tr className="bg-gray-50">
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">
                   Product
                 </th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/6">
                   Price Details
                 </th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Why It&apos;s BIFL
                 </th>
               </tr>
@@ -142,7 +142,7 @@ export default async function Page({ params }: PageProps) {
             <tbody className="divide-y divide-gray-200 bg-white">
               {content.products?.map((product) => (
                 <tr key={product.name} className="hover:bg-gray-50/50">
-                  <td className="px-4 py-4">
+                  <td className="px-6 py-4">
                     <a 
                       href={product.link}
                       target="_blank"
@@ -153,14 +153,14 @@ export default async function Page({ params }: PageProps) {
                         {product.name}
                       </div>
                       <div className="mt-1 flex items-center text-sm text-gray-500 group-hover:text-blue-500">
-                        <span>View on Amazon</span>
+                        <span>Shop Now</span>
                         <svg className="ml-1 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
                           <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" />
                         </svg>
                       </div>
                     </a>
                   </td>
-                  <td className="px-4 py-4">
+                  <td className="px-6 py-4">
                     <div className="flex flex-col">
                       <span className="inline-flex items-center text-sm font-medium text-blue-600">
                         {product.priceTier}
@@ -170,9 +170,9 @@ export default async function Page({ params }: PageProps) {
                       </span>
                     </div>
                   </td>
-                  <td className="px-4 py-4">
+                  <td className="px-6 py-4">
                     <div className="prose prose-sm max-w-none text-gray-600">
-                      <p className="whitespace-pre-line">
+                      <p className="whitespace-pre-line leading-relaxed">
                         {product.whyBifl}
                       </p>
                     </div>
