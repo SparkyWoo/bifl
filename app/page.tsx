@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Search } from './components/ui/search'
+import { SearchBox } from './components/SearchBox'
 import { getAllCategories } from './lib/categories'
 
 export default async function Home() {
@@ -8,7 +8,7 @@ export default async function Home() {
   return (
     <div className="space-y-8">
       <div className="mx-auto max-w-2xl">
-        <Search categories={categories} />
+        <SearchBox categories={categories} />
       </div>
 
       <div className="space-y-4">
@@ -18,7 +18,7 @@ export default async function Home() {
             <li key={category.id}>
               <Link
                 href={`/categories/${category.id}`}
-                className="block rounded-lg border border-gray-200 px-4 py-3 hover:border-primary hover:bg-gray-50"
+                className="block rounded-lg border border-gray-200 px-4 py-3 hover:border-blue-500 hover:bg-gray-50"
               >
                 <span className="font-medium">{category.title}</span>
                 <span className="ml-2 text-sm text-gray-500">
