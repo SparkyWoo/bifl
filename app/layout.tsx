@@ -1,9 +1,10 @@
+import * as React from 'react'
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getAllCategories } from "./lib/categories";
 import Link from "next/link";
-import { Category } from "./lib/types";
+import { CategoryListClient } from "./components/CategoryList";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -18,36 +19,7 @@ export const metadata: Metadata = {
 
 async function CategoryList() {
   const categories = await getAllCategories()
-  
-  return (
-    <nav className="w-72 border-r border-gray-200 bg-white">
-      <div className="sticky top-0">
-        <div className="px-4 py-3 border-b border-gray-200 bg-gray-50">
-          <h2 className="text-sm font-medium text-gray-500">Categories</h2>
-        </div>
-        <div className="h-[calc(100vh-8.5rem)] overflow-y-auto px-3 py-3">
-          <ul className="space-y-1">
-            {categories.map((category: Category) => (
-              <li key={category.id}>
-                <Link
-                  href={`/categories/${category.id}`}
-                  className="flex flex-col px-3 py-2 text-sm rounded-md hover:bg-gray-50 transition-colors"
-                >
-                  <span className="font-medium text-gray-900">{category.title}</span>
-                  <span className="text-xs text-gray-500 mt-0.5 line-clamp-2">
-                    {category.description}
-                  </span>
-                  <span className="text-xs text-gray-400 mt-1">
-                    Updated {new Date(category.lastUpdated).toLocaleDateString()}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </nav>
-  )
+  return <CategoryListClient categories={categories} />
 }
 
 export default function RootLayout({
@@ -62,7 +34,9 @@ export default function RootLayout({
           <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
             <div className="mx-auto px-4 py-3">
               <h1 className="text-lg font-semibold tracking-tight text-gray-900">
-                Buy It For Life
+                <Link href="/" className="hover:text-gray-600 transition-colors">
+                  Buy It For Life
+                </Link>
               </h1>
             </div>
           </header>
@@ -77,7 +51,7 @@ export default function RootLayout({
           <footer className="bg-white border-t border-gray-200">
             <div className="mx-auto px-4 py-3">
               <p className="text-center text-xs text-gray-500">
-                Last updated: {new Date().toLocaleDateString()}
+                © {new Date().getFullYear()} Buy It For Life
                 <br />
                 <span className="mt-1 block">
                   This site contains affiliate links. We may earn a commission when you purchase through these links.
