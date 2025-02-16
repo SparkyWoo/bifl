@@ -99,34 +99,12 @@ export default async function CategoryPage({ params }: PageProps) {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col space-y-4">
-        <Link
-          href="/"
-          className="text-sm text-blue-500 hover:text-blue-600 flex items-center w-fit"
-        >
-          <svg 
-            className="w-4 h-4 mr-1" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M10 19l-7-7m0 0l7-7m-7 7h18" 
-            />
-          </svg>
-          Back to Categories
-        </Link>
-
-        <div>
-          <h1 className="text-lg font-medium text-gray-900">{content.title}</h1>
-          <p className="text-sm text-gray-500 mt-1">
-            Last updated: {new Date(content.lastUpdated).toLocaleDateString()}
-          </p>
-        </div>
+    <div className="max-w-4xl space-y-6">
+      <div>
+        <h1 className="text-xl font-medium text-gray-900">{content.title}</h1>
+        <p className="text-sm text-gray-500 mt-1">
+          Last updated: {new Date(content.lastUpdated).toLocaleDateString()}
+        </p>
       </div>
 
       <div className="bg-white border border-gray-200 rounded-md p-4">
