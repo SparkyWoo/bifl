@@ -4,10 +4,9 @@ import { compileMDX } from 'next-mdx-remote/rsc'
 import fs from 'fs'
 import path from 'path'
 
-interface Props {
-  params: {
-    id: string
-  }
+type PageProps = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 interface MDXFrontmatter {
@@ -25,7 +24,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function CategoryPage({ params }: Props) {
+export default async function CategoryPage({ params, searchParams }: PageProps) {
   const { id } = params
   const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
 
