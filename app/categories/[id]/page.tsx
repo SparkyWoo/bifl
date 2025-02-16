@@ -33,7 +33,7 @@ type Props = {
   searchParams: Record<string, string | string[] | undefined>
 }
 
-export default function CategoryPage({ params }: Props) {
+export default async function CategoryPage({ params }: Props) {
   const { id } = params
   const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
 
@@ -42,7 +42,7 @@ export default function CategoryPage({ params }: Props) {
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf8')
-  const { content, frontmatter } = compileMDX<MDXFrontmatter>({
+  const { content, frontmatter } = await compileMDX<MDXFrontmatter>({
     source: fileContent,
     options: { parseFrontmatter: true }
   })
@@ -59,7 +59,7 @@ export default function CategoryPage({ params }: Props) {
       <div className="rounded-lg border border-gray-200 bg-white p-6">
         <h2 className="mb-4 text-lg font-semibold">Price Ranges</h2>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-4">
-          {Object.entries(frontmatter.priceRanges).map(([tier, range]) => (
+          {Object.entries(frontmatter.priceRanges).map(([tier, range]: [string, string]) => (
             <div key={tier} className="rounded-lg border border-gray-200 p-3">
               <span className="font-medium">{tier}</span>
               <span className="ml-2 text-gray-600">{range}</span>
