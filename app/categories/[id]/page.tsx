@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { notFound } from 'next/navigation'
-import { getAllCategories } from '@/app/lib/categories'
+import { getAllCategories } from '../../lib/categories'
 import { compileMDX } from 'next-mdx-remote/rsc'
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import { Metadata } from 'next'
 import React from 'react'
-import { Category, Product } from '@/app/lib/types'
+import { Category, Product } from '../../lib/types'
 
 interface MDXFrontmatter extends Omit<Category, 'id'> {
   products: Product[]
