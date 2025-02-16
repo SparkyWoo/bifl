@@ -3,59 +3,34 @@
 import * as React from 'react'
 import { motion } from 'framer-motion'
 
+interface Feature {
+  title: string
+  description: string
+  icon: React.ReactNode
+}
+
 function BackgroundGradient() {
   return (
     <div className="absolute inset-0 overflow-hidden -z-10">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-blue-50/5 blur-3xl" />
-      <div className="absolute inset-0" aria-hidden="true">
-        <svg
-          className="absolute h-full w-full"
-          width="100%"
-          height="100%"
-          viewBox="0 0 800 800"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g opacity="0.45" stroke="currentColor" strokeWidth="2">
-            <circle 
-              className="text-blue-100/50" 
-              cx="400" 
-              cy="400" 
-              r="200" 
-            />
-            <path
-              className="text-blue-200/50"
-              d="M 300 550 L 500 250"
-            />
-            <path
-              className="text-blue-200/50"
-              d="M 500 550 L 300 250"
-            />
-            <rect
-              className="text-blue-100/50"
-              x="250"
-              y="250"
-              width="300"
-              height="300"
-              transform="rotate(45 400 400)"
-            />
-            <circle 
-              className="text-blue-100/50" 
-              cx="400" 
-              cy="400" 
-              r="100" 
-            />
-            {[...Array(8)].map((_, i) => (
-              <circle
-                key={i}
-                className="text-blue-100/30"
-                cx={400 + Math.cos(i * Math.PI / 4) * 150}
-                cy={400 + Math.sin(i * Math.PI / 4) * 150}
-                r="10"
-              />
-            ))}
-          </g>
-        </svg>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50/5" />
+    </div>
+  )
+}
+
+function TrustSignals() {
+  return (
+    <div className="grid grid-cols-3 gap-8 text-center text-sm text-gray-600 mt-12">
+      <div>
+        <div className="font-medium text-2xl text-gray-900 mb-1">50+</div>
+        <div>Categories</div>
+      </div>
+      <div>
+        <div className="font-medium text-2xl text-gray-900 mb-1">1,000+</div>
+        <div>Product Reviews</div>
+      </div>
+      <div>
+        <div className="font-medium text-2xl text-gray-900 mb-1">10k+</div>
+        <div>Happy Users</div>
       </div>
     </div>
   )
@@ -80,19 +55,19 @@ export default function HomePage() {
       <BackgroundGradient />
       
       <div className="relative z-10 container mx-auto px-6 max-w-4xl">
-        <div className="text-center space-y-6">
+        <div className="text-center space-y-8">
           <motion.div
             custom={0}
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-2"
+            className="space-y-4"
           >
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
               Buy It For Life
             </h1>
-            <p className="text-lg text-gray-600">
-              Curated recommendations for products that stand the test of time
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Expert-curated recommendations for products that truly last a lifetime
             </p>
           </motion.div>
 
@@ -103,10 +78,11 @@ export default function HomePage() {
             animate="visible"
             className="max-w-2xl mx-auto"
           >
-            <div className="prose prose-blue text-gray-600">
+            <div className="prose prose-lg prose-blue text-gray-600">
               <p className="lead">
-                We believe in quality over quantity. Our recommendations focus on durable, well-crafted products 
-                that offer the best value over their lifetime, not just the lowest initial cost.
+                We meticulously research and test products to find items that are built to last. 
+                Our recommendations focus on quality, durability, and long-term value — because 
+                the best products are the ones you only need to buy once.
               </p>
             </div>
           </motion.div>
@@ -116,17 +92,8 @@ export default function HomePage() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm"
           >
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="p-6 bg-white/50 backdrop-blur-sm border border-gray-200/50 rounded-lg"
-              >
-                <h3 className="font-medium text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+            <TrustSignals />
           </motion.div>
 
           <motion.div
@@ -134,11 +101,33 @@ export default function HomePage() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="pt-6"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
-            <p className="text-sm text-gray-500">
-              Browse categories on the left to explore our recommendations
-            </p>
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="p-6 bg-white shadow-sm border border-gray-100 rounded-xl transition-all hover:shadow-md"
+              >
+                <div className="text-blue-500 mb-3">{feature.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            custom={4}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+            className="pt-8"
+          >
+            <div className="inline-flex items-center space-x-1 text-sm text-gray-500 bg-gray-50 px-4 py-2 rounded-full">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Updated daily with new products and reviews</span>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -146,17 +135,32 @@ export default function HomePage() {
   )
 }
 
-const features = [
+const features: Feature[] = [
   {
-    title: 'Thoroughly Researched',
-    description: 'Each recommendation is backed by extensive research, real-world durability tests, and user experiences.',
+    title: 'Expert Research',
+    description: 'Every product is thoroughly researched and vetted by our team of experts and long-term users.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+      </svg>
+    )
   },
   {
     title: 'Lifetime Value',
-    description: 'We focus on products that may cost more upfront but save money in the long run through durability and quality.',
+    description: 'We focus on products that save money in the long run through exceptional durability and quality.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    )
   },
   {
-    title: 'Transparent Reviews',
-    description: 'Clear explanations of why each product is considered "buy it for life" quality, with no hidden agendas.',
+    title: 'User Verified',
+    description: 'Real feedback from long-term owners helps us identify truly reliable and lasting products.',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
+      </svg>
+    )
   },
 ]
