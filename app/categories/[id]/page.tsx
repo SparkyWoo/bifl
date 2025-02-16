@@ -32,7 +32,37 @@ async function getCategoryContent(id: string) {
     options: { parseFrontmatter: true }
   })
 
-  return frontmatter
+  // Parse products from the MDX content
+  const lines = fileContent.split('\n')
+  const tableStartIndex = lines.findIndex(line => line.includes('| Product Name |'))
+  const products: Product[] = []
+
+  if (tableStartIndex !== -1) {
+    // Skip the header and separator lines
+    const dataLines = lines.slice(tableStartIndex + 2)
+      .filter(line => line.trim().startsWith('|') && line.trim().endsWith('|'))
+
+    for (const line of dataLines) {
+      const cells = line.split('|').map((cell: string) => cell.trim()).filter(Boolean)
+      if (cells.length >= 5) {
+        const [name, priceTier, priceRange, whyBifl, linkCell] = cells
+        const link = linkCell.match(/\[(.*?)\]\((.*?)\)/)
+        
+        products.push({
+          name,
+          priceTier,
+          priceRange,
+          whyBifl,
+          link: link?.[2] || '#'
+        })
+      }
+    }
+  }
+
+  return {
+    ...frontmatter,
+    products
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
