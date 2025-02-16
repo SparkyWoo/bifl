@@ -11,6 +11,9 @@ const withMDX = createMDX({
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  experimental: {
+    mdxRs: true,
+  },
   // Optimize for static export
   output: 'export' as const,
   // Disable image optimization since we're not using images

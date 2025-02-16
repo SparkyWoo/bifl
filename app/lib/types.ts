@@ -9,7 +9,7 @@ export interface PriceRange {
 
 export interface Product {
   name: string
-  priceTier: PriceTier
+  priceTier: string
   priceRange: string
   whyBifl: string
   link: string

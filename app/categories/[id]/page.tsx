@@ -7,18 +7,37 @@ import fs from 'fs'
 import path from 'path'
 import { Metadata } from 'next'
 import React from 'react'
+import { Category, Product } from '@/app/lib/types'
 
-interface MDXFrontmatter {
-  title: string
-  id: string
-  description: string
-  lastUpdated: string
-  priceRanges: Record<string, string>
+interface MDXFrontmatter extends Omit<Category, 'id'> {
+  products: Product[]
 }
 
-export const metadata: Metadata = {
-  title: 'Category | Buy It For Life',
-  description: 'Product recommendations that last a lifetime',
+interface PageProps {
+  params: { id: string }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = params
+  const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
+
+  if (!fs.existsSync(filePath)) {
+    return {
+      title: 'Not Found | Buy It For Life',
+      description: 'Category not found',
+    }
+  }
+
+  const fileContent = fs.readFileSync(filePath, 'utf8')
+  const { frontmatter } = await compileMDX<MDXFrontmatter>({
+    source: fileContent,
+    options: { parseFrontmatter: true }
+  })
+
+  return {
+    title: `${frontmatter.title} | Buy It For Life`,
+    description: frontmatter.description,
+  }
 }
 
 export const dynamic = 'force-static'
@@ -31,8 +50,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function CategoryPage(props: any) {
-  const { id } = props.params
+export default async function CategoryPage({ params }: PageProps) {
+  const { id } = params
   const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
 
   if (!fs.existsSync(filePath)) {
@@ -40,7 +59,7 @@ export default async function CategoryPage(props: any) {
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf8')
-  const { content, frontmatter } = await compileMDX<MDXFrontmatter>({
+  const { frontmatter } = await compileMDX<MDXFrontmatter>({
     source: fileContent,
     options: { parseFrontmatter: true }
   })
@@ -66,8 +85,60 @@ export default async function CategoryPage(props: any) {
         </div>
       </div>
 
-      <div className="prose prose-sm max-w-none">
-        {content}
+      <div className="bg-white border border-gray-200 rounded-md overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Product Name
+                </th>
+                <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Price Tier
+                </th>
+                <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Price Range
+                </th>
+                <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Why It's BIFL
+                </th>
+                <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Link
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {frontmatter.products?.map((product, index) => (
+                <tr key={index} className="hover:bg-gray-50">
+                  <td className="px-3 py-2 text-sm font-medium text-gray-900">
+                    {product.name}
+                  </td>
+                  <td className="px-3 py-2 text-sm text-gray-500">
+                    {product.priceTier}
+                  </td>
+                  <td className="px-3 py-2 text-sm text-gray-500">
+                    {product.priceRange}
+                  </td>
+                  <td className="px-3 py-2 text-sm text-gray-500 max-w-md">
+                    <div className="line-clamp-3">
+                      {product.whyBifl}
+                    </div>
+                  </td>
+                  <td className="px-3 py-2 text-sm text-gray-500">
+                    <a 
+                      href={product.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-500 hover:text-blue-600"
+                    >
+                      Buy
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   )
