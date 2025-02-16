@@ -24,7 +24,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function CategoryPage({ params, searchParams }: PageProps) {
+export default async function CategoryPage({ params, searchParams: _searchParams }: PageProps) {
   const { id } = params
   const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
 
