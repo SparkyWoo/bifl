@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Buy It For Life (BIFL)
 
-## Getting Started
+A curated collection of durable, long-lasting products that are worth the investment. This site focuses on providing straightforward recommendations across various categories, helping users make informed decisions about products that are built to last.
+
+## Features
+
+- Simple, clean interface
+- Category-based organization
+- Price tier indicators
+- Real-time search
+- Mobile-friendly design
+- No login required
+- Affiliate links with full disclosure
+
+## Tech Stack
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- MDX for content
+- Fuse.js for search
+
+## Development
 
 First, run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content Management
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Categories and products are managed through MDX files in the `app/content/categories` directory. Each category is a separate MDX file with frontmatter for metadata and a markdown table for products.
 
-## Learn More
+### Adding a New Category
 
-To learn more about Next.js, take a look at the following resources:
+Create a new MDX file in `app/content/categories` with the following structure:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```mdx
+---
+title: "Category Name"
+id: "category-id"
+description: "Category description"
+lastUpdated: "YYYY-MM-DD"
+priceRanges: {
+  "$": "Under $50",
+  "$$": "$50-200",
+  "$$$": "$200-500",
+  "$$$$": "$500+"
+}
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Products
 
-## Deploy on Vercel
+| Product Name | Price Tier | Price Range | Why It's BIFL | Link |
+|--------------|------------|-------------|---------------|------|
+| Product A    | $          | $20-30      | Description   | [Link](#) |
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Building
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To create a production build:
+
+```bash
+npm run build
+```
+
+This will create a static export in the `out` directory.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+MIT License - see the [LICENSE](LICENSE) file for details

@@ -3,7 +3,6 @@ import { getAllCategories } from '@/app/lib/categories'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import fs from 'fs'
 import path from 'path'
-import { Category } from '@/app/lib/types'
 
 interface Props {
   params: {

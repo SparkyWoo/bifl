@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, useMemo } from 'react'
 import Fuse from 'fuse.js'
 import { SearchResult } from '@/app/lib/types'
 import { useRouter } from 'next/navigation'
@@ -14,12 +14,12 @@ export function Search({ categories }: SearchProps) {
   const [results, setResults] = useState<SearchResult[]>([])
   const router = useRouter()
 
-  // Initialize Fuse instance
-  const fuse = new Fuse(categories, {
+  // Initialize Fuse instance with useMemo
+  const fuse = useMemo(() => new Fuse(categories, {
     keys: ['title', 'products.name'],
     threshold: 0.3,
     includeMatches: true,
-  })
+  }), [categories])
 
   const handleSearch = useCallback((searchQuery: string) => {
     if (!searchQuery) {
