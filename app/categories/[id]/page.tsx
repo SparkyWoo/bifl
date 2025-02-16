@@ -19,14 +19,13 @@ export async function generateStaticParams() {
   }))
 }
 
-type PageParams = {
-  id: string
-}
+export const dynamic = 'force-static'
+export const dynamicParams = false
 
-export default async function CategoryPage({
+async function CategoryPage({
   params,
 }: {
-  params: PageParams
+  params: { id: string }
 }) {
   const { id } = params
   const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
@@ -67,4 +66,6 @@ export default async function CategoryPage({
       </div>
     </div>
   )
-} 
+}
+
+export default CategoryPage 
