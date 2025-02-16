@@ -87,7 +87,7 @@ export function SearchBox({ categories }: SearchBoxProps) {
   }, [])
 
   return (
-    <div ref={searchRef} className="relative w-full max-w-2xl mx-auto">
+    <div ref={searchRef} className="relative w-full">
       <div className="relative">
         <input
           type="text"
@@ -98,12 +98,12 @@ export function SearchBox({ categories }: SearchBoxProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Search for long-lasting products..."
-          className="w-full px-4 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Search products..."
+          className="w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-colors"
         />
         {isLoading && (
-          <div className="absolute right-3 top-1/2 -translate-y-1/2">
-            <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="absolute right-2.5 top-1/2 -translate-y-1/2">
+            <div className="w-3.5 h-3.5 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
           </div>
         )}
       </div>
@@ -112,9 +112,9 @@ export function SearchBox({ categories }: SearchBoxProps) {
         <div 
           id="search-results"
           role="listbox"
-          className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg"
+          className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-sm overflow-hidden"
         >
-          <ul className="py-2 max-h-96 overflow-auto">
+          <ul className="max-h-80 overflow-auto py-1">
             {results.map((result, index) => (
               <li 
                 key={index}
@@ -128,16 +128,18 @@ export function SearchBox({ categories }: SearchBoxProps) {
                     setQuery('')
                   }}
                   onMouseEnter={() => setSelectedIndex(index)}
-                  className={`w-full px-4 py-2 text-left focus:outline-none ${
-                    index === selectedIndex ? 'bg-blue-50' : 'hover:bg-gray-100'
+                  className={`w-full px-3 py-1.5 text-left ${
+                    index === selectedIndex ? 'bg-blue-50' : 'hover:bg-gray-50'
                   }`}
                 >
-                  <span className="block text-sm text-gray-600">
-                    {result.type === 'category' ? 'Category' : 'Product in ' + result.category}
-                  </span>
-                  <span className="block font-medium text-gray-900">
-                    {result.item}
-                  </span>
+                  <div className="flex flex-col">
+                    <span className="text-xs text-gray-500">
+                      {result.type === 'category' ? 'Category' : result.category}
+                    </span>
+                    <span className="text-sm font-medium text-gray-900">
+                      {result.item}
+                    </span>
+                  </div>
                 </button>
               </li>
             ))}
