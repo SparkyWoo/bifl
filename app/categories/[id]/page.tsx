@@ -127,7 +127,7 @@ export default async function CategoryPage({ params }: PageProps) {
                   <th 
                     key={header}
                     scope="col" 
-                    className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     {header}
                   </th>
@@ -137,28 +137,41 @@ export default async function CategoryPage({ params }: PageProps) {
             <tbody className="bg-white divide-y divide-gray-200">
               {content.products?.map((product) => (
                 <tr key={product.name} className="hover:bg-gray-50">
-                  <td className="px-3 py-2 text-sm font-medium text-gray-900">
+                  <td className="px-3 py-2 text-sm font-medium text-gray-900 whitespace-nowrap">
                     {product.name}
                   </td>
-                  <td className="px-3 py-2 text-sm text-gray-500">
+                  <td className="px-3 py-2 text-sm text-gray-500 whitespace-nowrap">
                     {product.priceTier}
                   </td>
-                  <td className="px-3 py-2 text-sm text-gray-500">
+                  <td className="px-3 py-2 text-sm text-gray-500 whitespace-nowrap">
                     {product.priceRange}
                   </td>
-                  <td className="px-3 py-2 text-sm text-gray-500 max-w-md">
-                    <div className="line-clamp-3">
+                  <td className="px-3 py-2 text-sm text-gray-500">
+                    <div className="line-clamp-3 max-w-md">
                       {product.whyBifl}
                     </div>
                   </td>
-                  <td className="px-3 py-2 text-sm text-gray-500">
+                  <td className="px-3 py-2 text-sm text-gray-500 whitespace-nowrap">
                     <a 
                       href={product.link} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-blue-500 hover:text-blue-600"
+                      className="inline-flex items-center px-3 py-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
                       aria-label={`Buy ${product.name}`}
                     >
+                      <svg 
+                        className="w-4 h-4 mr-1" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" 
+                        />
+                      </svg>
                       Buy
                     </a>
                   </td>
