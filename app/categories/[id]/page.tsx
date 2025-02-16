@@ -28,7 +28,12 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function CategoryPage({ params }: { params: { id: string } }) {
+type Props = {
+  params: { id: string }
+  searchParams: Record<string, string | string[] | undefined>
+}
+
+export default function CategoryPage({ params }: Props) {
   const { id } = params
   const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
 
@@ -37,7 +42,7 @@ export default async function CategoryPage({ params }: { params: { id: string } 
   }
 
   const fileContent = fs.readFileSync(filePath, 'utf8')
-  const { content, frontmatter } = await compileMDX<MDXFrontmatter>({
+  const { content, frontmatter } = compileMDX<MDXFrontmatter>({
     source: fileContent,
     options: { parseFrontmatter: true }
   })
