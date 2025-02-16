@@ -128,54 +128,57 @@ export default async function Page({ params }: PageProps) {
           <table className="min-w-full divide-y divide-gray-200">
             <thead>
               <tr className="bg-gray-50">
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">
+                <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/5">
                   Product
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/6">
-                  Price Details
+                <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-24">
+                  Price
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Why It&apos;s BIFL
+                </th>
+                <th scope="col" className="px-4 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-20">
+                  Action
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 bg-white">
               {content.products?.map((product) => (
                 <tr key={product.name} className="hover:bg-gray-50/50">
-                  <td className="px-6 py-4">
-                    <a 
-                      href={product.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group block"
-                    >
-                      <div className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
-                        {product.name}
-                      </div>
-                      <div className="mt-1 flex items-center text-sm text-gray-500 group-hover:text-blue-500">
-                        <span>Shop Now</span>
-                        <svg className="ml-1 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" />
-                        </svg>
-                      </div>
-                    </a>
+                  <td className="px-4 py-3">
+                    <div className="font-medium text-gray-900">
+                      {product.name}
+                    </div>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-3">
                     <div className="flex flex-col">
-                      <span className="inline-flex items-center text-sm font-medium text-blue-600">
+                      <span className="text-sm font-medium text-blue-600">
                         {product.priceTier}
                       </span>
-                      <span className="mt-1 text-sm text-gray-600">
+                      <span className="text-xs text-gray-600">
                         {product.priceRange}
                       </span>
                     </div>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-3">
                     <div className="prose prose-sm max-w-none text-gray-600">
-                      <p className="whitespace-pre-line leading-relaxed">
+                      <p className="text-sm leading-relaxed line-clamp-2 hover:line-clamp-none">
                         {product.whyBifl}
                       </p>
                     </div>
+                  </td>
+                  <td className="px-4 py-3 text-center">
+                    <a
+                      href={product.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-3 py-1 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-md transition-colors"
+                    >
+                      Shop
+                      <svg className="ml-1 w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" />
+                      </svg>
+                    </a>
                   </td>
                 </tr>
               ))}
