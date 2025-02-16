@@ -98,74 +98,72 @@ export default async function CategoryPage({ params }: PageProps) {
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-medium text-gray-900">{content.title}</h1>
-          <p className="text-sm text-gray-500">
-            Last updated: {new Date(content.lastUpdated).toLocaleDateString()}
-          </p>
+    <div className="max-w-[1200px] mx-auto">
+      <div className="mb-6 pb-4 border-b">
+        <div className="flex items-baseline justify-between">
+          <h1 className="text-xl font-medium tracking-tight text-gray-900">{content.title}</h1>
+          <div className="text-xs text-gray-500 tabular-nums">
+            {Object.entries(content.priceRanges).map(([tier, range]) => (
+              <span key={tier} className="ml-3 first:ml-0">
+                <span className="font-medium">{tier}</span>
+                <span className="ml-1 text-gray-400">{range}</span>
+              </span>
+            ))}
+          </div>
         </div>
-        <div className="text-sm text-gray-500">
-          {Object.entries(content.priceRanges).map(([tier, range]) => (
-            <div key={tier} className="inline-flex items-center ml-4 first:ml-0">
-              <span className="font-medium">{tier}</span>
-              <span className="ml-1 text-gray-400">{range}</span>
-            </div>
-          ))}
-        </div>
+        <p className="mt-1 text-xs text-gray-500">
+          Last updated: {new Date(content.lastUpdated).toLocaleDateString()}
+        </p>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4">
-                  Product Name
-                </th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-24">
-                  Price
-                </th>
-                <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Why It&apos;s BIFL
-                </th>
-                <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-24">
-                  Buy
-                </th>
+      <div className="bg-white border border-gray-200 rounded-md overflow-hidden">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead>
+            <tr className="bg-gray-50/75">
+              <th scope="col" className="py-2 pl-4 pr-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wide w-64">
+                Product
+              </th>
+              <th scope="col" className="px-2 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wide w-20">
+                Price
+              </th>
+              <th scope="col" className="px-2 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">
+                Why It&apos;s BIFL
+              </th>
+              <th scope="col" className="py-2 pl-2 pr-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wide w-16">
+                Buy
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {content.products?.map((product) => (
+              <tr key={product.name} className="hover:bg-gray-50/50">
+                <td className="py-2.5 pl-4 pr-2">
+                  <div className="font-medium text-sm text-gray-900">{product.name}</div>
+                </td>
+                <td className="px-2 py-2.5 tabular-nums">
+                  <div className="text-xs font-medium text-gray-700">{product.priceTier}</div>
+                  <div className="text-xs text-gray-500">{product.priceRange}</div>
+                </td>
+                <td className="px-2 py-2.5">
+                  <div className="text-xs text-gray-600 line-clamp-2">
+                    {product.whyBifl}
+                  </div>
+                </td>
+                <td className="py-2.5 pl-2 pr-4 text-right">
+                  <a
+                    href={product.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex text-xs font-medium text-blue-600 hover:text-blue-700"
+                    aria-label={`Buy ${product.name}`}
+                  >
+                    Buy →
+                  </a>
+                </td>
               </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {content.products?.map((product) => (
-                <tr key={product.name} className="hover:bg-gray-50">
-                  <td className="px-4 py-4">
-                    <div className="font-medium text-gray-900">{product.name}</div>
-                  </td>
-                  <td className="px-4 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900 font-medium">{product.priceTier}</div>
-                    <div className="text-sm text-gray-500">{product.priceRange}</div>
-                  </td>
-                  <td className="px-4 py-4">
-                    <div className="text-sm text-gray-600 prose-sm max-w-none">
-                      {product.whyBifl}
-                    </div>
-                  </td>
-                  <td className="px-4 py-4 text-center">
-                    <a
-                      href={product.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                      aria-label={`Buy ${product.name}`}
-                    >
-                      Buy Now
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   )
