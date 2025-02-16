@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-fraunces)', 'Georgia', 'serif'],
+      },
       typography: {
         DEFAULT: {
           css: {
@@ -18,6 +22,15 @@ const config: Config = {
               '&:hover': {
                 color: 'rgb(var(--primary-dark))',
               },
+            },
+            h1: {
+              fontFamily: 'var(--font-fraunces)',
+            },
+            h2: {
+              fontFamily: 'var(--font-fraunces)',
+            },
+            h3: {
+              fontFamily: 'var(--font-fraunces)',
             },
           },
         },

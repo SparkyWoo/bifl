@@ -100,10 +100,10 @@ export default async function Page({ params }: PageProps) {
   return (
     <div className="max-w-7xl space-y-4">
       <div className="mb-2">
-        <h1 className="text-xl font-bold text-gray-900">{content.title}</h1>
-        <p className="text-sm text-gray-600">
+        <h1 className="text-xl font-serif font-bold text-gray-900 tracking-tight">{content.title}</h1>
+        <p className="text-sm text-gray-600 font-sans">
           {content.description}
-          <span className="text-gray-400 ml-2">
+          <span className="text-gray-400 ml-2 font-light">
             · Updated {new Date(content.lastUpdated).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
           </span>
         </p>
@@ -114,13 +114,13 @@ export default async function Page({ params }: PageProps) {
           <table className="min-w-full divide-y divide-gray-200">
             <thead>
               <tr className="bg-gray-50">
-                <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-48">
+                <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wide w-48">
                   Product
                 </th>
-                <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-20">
+                <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wide w-20">
                   Price
                 </th>
-                <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wide">
                   Why It&apos;s BIFL
                 </th>
                 <th scope="col" className="w-16" />
@@ -130,20 +130,20 @@ export default async function Page({ params }: PageProps) {
               {content.products?.map((product) => (
                 <tr key={product.name} className="hover:bg-gray-50/50">
                   <td className="px-3 py-2 truncate">
-                    <div className="font-medium text-gray-900 text-sm truncate">
+                    <div className="font-serif font-medium text-gray-900 text-sm truncate">
                       {product.name}
                     </div>
                   </td>
                   <td className="px-3 py-2">
                     <div className="text-sm">
                       <span className="font-medium text-blue-600">{product.priceTier}</span>
-                      <span className="text-xs text-gray-500 ml-1">
+                      <span className="text-xs text-gray-500 ml-1 font-light">
                         {product.priceRange}
                       </span>
                     </div>
                   </td>
                   <td className="px-3 py-2">
-                    <p className="text-sm text-gray-600 line-clamp-1 hover:line-clamp-none">
+                    <p className="text-sm text-gray-600 line-clamp-1 hover:line-clamp-none font-light">
                       {product.whyBifl}
                     </p>
                   </td>
