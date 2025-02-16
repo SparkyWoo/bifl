@@ -7,6 +7,56 @@ function BackgroundGradient() {
   return (
     <div className="absolute inset-0 overflow-hidden -z-10">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-blue-50/5 blur-3xl" />
+      <div className="absolute inset-0" aria-hidden="true">
+        <svg
+          className="absolute h-full w-full"
+          width="100%"
+          height="100%"
+          viewBox="0 0 800 800"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g opacity="0.45" stroke="currentColor" strokeWidth="2">
+            <circle 
+              className="text-blue-100/50" 
+              cx="400" 
+              cy="400" 
+              r="200" 
+            />
+            <path
+              className="text-blue-200/50"
+              d="M 300 550 L 500 250"
+            />
+            <path
+              className="text-blue-200/50"
+              d="M 500 550 L 300 250"
+            />
+            <rect
+              className="text-blue-100/50"
+              x="250"
+              y="250"
+              width="300"
+              height="300"
+              transform="rotate(45 400 400)"
+            />
+            <circle 
+              className="text-blue-100/50" 
+              cx="400" 
+              cy="400" 
+              r="100" 
+            />
+            {[...Array(8)].map((_, i) => (
+              <circle
+                key={i}
+                className="text-blue-100/30"
+                cx={400 + Math.cos(i * Math.PI / 4) * 150}
+                cy={400 + Math.sin(i * Math.PI / 4) * 150}
+                r="10"
+              />
+            ))}
+          </g>
+        </svg>
+      </div>
     </div>
   )
 }
