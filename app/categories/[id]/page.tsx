@@ -149,7 +149,7 @@ export default async function Page({ params }: PageProps) {
                   Price
                 </th>
                 <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Why It&apos;s BIFL
+                  Why It&apos;s BuyWhoa
                 </th>
                 <th scope="col" className="relative px-3 py-2 w-20">
                   <span className="sr-only">Shop</span>
