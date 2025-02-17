@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { getAllCategories } from './lib/categories'
 
+export const dynamic = 'force-static'
+
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const categories = await getAllCategories()
   
