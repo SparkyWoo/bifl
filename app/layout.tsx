@@ -1,29 +1,38 @@
 import * as React from 'react'
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Instrument_Sans } from "next/font/google";
-import "./globals.css";
+import { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
 import { getAllCategories } from "./lib/categories";
 import Link from "next/link";
 import { CategoryListClient } from "./components/CategoryList";
 
-const jakarta = Plus_Jakarta_Sans({ 
-  subsets: ["latin"],
-  variable: '--font-jakarta',
-});
-
-const instrument = Instrument_Sans({
-  subsets: ["latin"],
-  variable: '--font-instrument',
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s | BuyWhoa',
-    default: 'BuyWhoa - Durable Product Recommendations',
+  title: 'BuyWhoa - Expert-Curated Lifetime Products',
+  description: 'Expert-curated recommendations for products that truly last a lifetime. We research and test products to find items built to last, focusing on quality, durability, and long-term value.',
+  keywords: ['lifetime products', 'durable goods', 'product recommendations', 'quality items', 'long-lasting products'],
+  openGraph: {
+    title: 'BuyWhoa - Expert-Curated Lifetime Products',
+    description: 'Expert-curated recommendations for products that truly last a lifetime.',
+    url: 'https://buywhoa.com',
+    siteName: 'BuyWhoa',
+    type: 'website',
   },
-  description: "Curated recommendations for long-lasting, high-quality products that are worth the investment.",
-  keywords: "BIFL, buy it for life, durable products, long-lasting products, quality products",
-};
+  twitter: {
+    card: 'summary_large_image',
+    title: 'BuyWhoa - Expert-Curated Lifetime Products',
+    description: 'Expert-curated recommendations for products that truly last a lifetime.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+  },
+}
 
 async function CategoryList() {
   const categories = await getAllCategories()
@@ -36,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${instrument.variable} font-sans antialiased`}>
+    <html lang="en" className={inter.className}>
       <body className="min-h-screen bg-gray-50 text-gray-900 text-sm">
         <div className="min-h-screen flex flex-col">
           <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
