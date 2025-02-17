@@ -13,7 +13,7 @@ export default function AboutPage() {
         <div className="space-y-2">
           <h1 className="text-2xl font-medium text-gray-900">About BuyWhoa</h1>
           <p className="text-gray-600">
-            We help you find products that make you go "Whoa!" – items so well-made and thoughtfully designed that they're worth every penny.
+            We help you find products that make you go &ldquo;Whoa!&rdquo; &ndash; items so well-made and thoughtfully designed that they&apos;re worth every penny.
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
                 <strong className="text-gray-900">Transparency:</strong> We use affiliate links to sustain our research, but this never influences our product selections.
               </li>
               <li>
-                <strong className="text-gray-900">Quality Obsession:</strong> We're relentless about finding products that truly deserve the "buy it for life" designation.
+                <strong className="text-gray-900">Quality Obsession:</strong> We&apos;re relentless about finding products that truly deserve the &ldquo;buy it for life&rdquo; designation.
               </li>
               <li>
                 <strong className="text-gray-900">Continuous Updates:</strong> We regularly revisit our recommendations to ensure they remain current and accurate.
@@ -70,7 +70,7 @@ export default function AboutPage() {
         <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 text-sm text-blue-900">
           <h3 className="font-medium mb-2">Our Promise</h3>
           <p>
-            Every product we recommend has been thoroughly vetted to ensure it delivers exceptional value and durability. We're not just helping you shop – we're helping you invest in products that truly last.
+            Every product we recommend has been thoroughly vetted to ensure it delivers exceptional value and durability. We&apos;re not just helping you shop &ndash; we&apos;re helping you invest in products that truly last.
           </p>
         </div>
       </section>
