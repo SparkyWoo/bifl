@@ -98,7 +98,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="max-w-4xl space-y-6 px-4 sm:px-6 py-4 sm:py-6">
+    <div className="space-y-6 px-4 sm:px-6 py-4 sm:py-6">
       <div className="space-y-2">
         <h1 className="text-xl sm:text-2xl font-medium text-gray-900">{content.title}</h1>
         <p className="text-sm text-gray-600">{content.description}</p>
@@ -107,20 +107,8 @@ export default async function Page({ params }: PageProps) {
         </p>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-lg p-3 sm:p-4">
-        <h2 className="text-sm font-medium text-gray-900 mb-3">Price Ranges</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {Object.entries(content.priceRanges).map(([tier, range]) => (
-            <div key={tier} className="bg-gray-50 rounded-md px-2 py-1.5 text-sm">
-              <span className="font-medium text-gray-900">{tier}</span>
-              <span className="ml-1.5 text-gray-600">{range}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Mobile Product List */}
-      <div className="block sm:hidden space-y-4">
+      <div className="block sm:hidden space-y-3">
         {content.products?.map((product) => (
           <div key={product.name} className="bg-white border border-gray-200 rounded-lg p-3">
             <div className="flex items-start justify-between gap-2">
@@ -151,7 +139,7 @@ export default async function Page({ params }: PageProps) {
       {/* Desktop Product Table */}
       <div className="hidden sm:block bg-white border border-gray-200 rounded-lg overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
+          <table className="w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
                 <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
