@@ -108,29 +108,40 @@ export default async function Page({ params }: PageProps) {
       </div>
 
       {/* Mobile Product List */}
-      <div className="block sm:hidden space-y-3">
+      <div className="block sm:hidden space-y-4">
         {content.products?.map((product) => (
-          <div key={product.name} className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="flex items-start justify-between gap-2">
-              <h3 className="font-medium text-gray-900">{product.name}</h3>
-              <div className="flex items-center gap-1.5 shrink-0">
-                <span className="text-sm font-medium text-blue-600">{product.priceTier}</span>
-                <span className="text-xs text-gray-500">{product.priceRange}</span>
+          <div key={product.name} className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+            <div className="p-4">
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="font-medium text-gray-900 text-base">{product.name}</h3>
+                <div className="flex flex-col items-end gap-0.5 shrink-0">
+                  <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-blue-700 bg-blue-50 rounded-full">
+                    {product.priceTier}
+                  </span>
+                  <span className="text-xs text-gray-500">
+                    {product.priceRange}
+                  </span>
+                </div>
               </div>
-            </div>
-            <p className="mt-2 text-sm text-gray-600">{product.whyBifl}</p>
-            <div className="mt-3">
-              <a 
-                href={product.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-blue-600 bg-blue-50 rounded-md hover:bg-blue-100 transition-colors"
-              >
-                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                Shop Now
-              </a>
+              
+              <div className="mt-3">
+                <h4 className="text-xs font-medium text-gray-500 mb-1">Why It&apos;s BuyWhoa:</h4>
+                <p className="text-sm text-gray-700">{product.whyBifl}</p>
+              </div>
+              
+              <div className="mt-4 pt-3 border-t border-gray-100">
+                <a 
+                  href={product.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center px-4 py-2.5 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  Shop Now
+                </a>
+              </div>
             </div>
           </div>
         ))}
