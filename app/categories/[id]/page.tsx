@@ -69,13 +69,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!content) {
     return {
-      title: 'Not Found | Buy It For Life',
+      title: 'Not Found | BuyWhoa',
       description: 'Category not found',
     }
   }
 
   return {
-    title: `${content.title} | Buy It For Life`,
+    title: `${content.title} | BuyWhoa`,
     description: content.description,
   }
 }

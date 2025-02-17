@@ -18,8 +18,8 @@ const instrument = Instrument_Sans({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Buy It For Life',
-    default: 'Buy It For Life - Durable Product Recommendations',
+    template: '%s | BuyWhoa',
+    default: 'BuyWhoa - Durable Product Recommendations',
   },
   description: "Curated recommendations for long-lasting, high-quality products that are worth the investment.",
   keywords: "BIFL, buy it for life, durable products, long-lasting products, quality products",
@@ -43,7 +43,7 @@ export default function RootLayout({
             <div className="mx-auto px-4 py-3">
               <h1 className="text-lg font-display tracking-tight text-gray-900">
                 <Link href="/" className="hover:text-gray-600 transition-colors">
-                  Buy It For Life
+                  BuyWhoa
                 </Link>
               </h1>
             </div>
@@ -59,7 +59,7 @@ export default function RootLayout({
           <footer className="bg-white border-t border-gray-200">
             <div className="mx-auto px-4 py-3">
               <p className="text-center text-xs text-gray-500">
-                © {new Date().getFullYear()} Buy It For Life
+                © {new Date().getFullYear()} BuyWhoa
                 <br />
                 <span className="mt-1 block">
                   This site contains affiliate links. We may earn a commission when you purchase through these links.

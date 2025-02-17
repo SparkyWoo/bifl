@@ -1,4 +1,4 @@
-# Buy It For Life (BIFL)
+# BuyWhoa
 
 A curated collection of durable, long-lasting products that are worth the investment. This site focuses on providing straightforward recommendations across various categories, helping users make informed decisions about products that are built to last.
 
@@ -57,7 +57,7 @@ priceRanges: {
 
 | Product Name | Price Tier | Price Range | Why It's BIFL | Link |
 |--------------|------------|-------------|---------------|------|
-| Product A    | $          | $20-30      | Description   | [Link](#) |
+| Product A    | $          | $20-30      | Description   | [Shop](#) |
 ```
 
 ## Building
