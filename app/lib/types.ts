@@ -20,7 +20,7 @@ export interface Category {
   title: string
   description: string
   lastUpdated: string
-  priceRanges: Record<PriceTier, string>
+  priceRanges: Record<string, string>
   products: Product[]
 }
 
