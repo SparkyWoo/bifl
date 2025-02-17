@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import { getAllCategories } from "./lib/categories";
 import Link from "next/link";
@@ -77,6 +78,7 @@ export default function RootLayout({
             </div>
           </footer>
         </div>
+        <Analytics />
       </body>
     </html>
   );
