@@ -18,6 +18,19 @@ interface PageProps {
   searchParams: any;
 }
 
+const components = {
+  a: ({ href, children }: { href: string; children: React.ReactNode }) => (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-blue-600 hover:text-blue-800 hover:underline"
+    >
+      {children}
+    </a>
+  ),
+}
+
 async function getCategoryContent(id: string) {
   const filePath = path.join(process.cwd(), 'app/content/categories', `${id}.mdx`)
 
@@ -47,11 +60,18 @@ async function getCategoryContent(id: string) {
         const [name, priceTier, priceRange, whyBifl, linkCell] = cells
         const link = linkCell.match(/\[(.*?)\]\((.*?)\)/)
         
+        // Compile the whyBifl content as MDX
+        const { content: whyBiflContent } = await compileMDX({
+          source: whyBifl,
+          components
+        })
+        
         products.push({
           name,
           priceTier,
           priceRange,
           whyBifl,
+          whyBiflContent,
           link: link?.[2] || '#'
         })
       }
@@ -126,7 +146,9 @@ export default async function Page({ params }: PageProps) {
               
               <div className="mt-3">
                 <h4 className="text-xs font-medium text-gray-500 mb-1">Why It&apos;s BuyWhoa:</h4>
-                <p className="text-sm text-gray-700">{product.whyBifl}</p>
+                <div className="text-sm text-gray-700 prose prose-sm max-w-none">
+                  {product.whyBiflContent}
+                </div>
               </div>
               
               <div className="mt-4 pt-3 border-t border-gray-100">
@@ -182,9 +204,9 @@ export default async function Page({ params }: PageProps) {
                     </div>
                   </td>
                   <td className="px-3 py-2">
-                    <p className="text-sm text-gray-600 line-clamp-2 hover:line-clamp-none">
-                      {product.whyBifl}
-                    </p>
+                    <div className="text-sm text-gray-600 line-clamp-2 hover:line-clamp-none prose prose-sm max-w-none">
+                      {product.whyBiflContent}
+                    </div>
                   </td>
                   <td className="px-3 py-2 text-right">
                     <a

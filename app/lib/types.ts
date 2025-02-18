@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 export type PriceTier = '$' | '$$' | '$$$' | '$$$$'
 
 export interface PriceRange {
@@ -12,6 +14,7 @@ export interface Product {
   priceTier: string
   priceRange: string
   whyBifl: string
+  whyBiflContent: React.ReactNode
   link: string
 }
 
