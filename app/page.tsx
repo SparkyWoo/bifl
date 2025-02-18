@@ -6,17 +6,17 @@ export default function HomePage() {
     <main className="px-4 sm:px-6 py-6">
       <div className="space-y-8">
         <header>
-          <h1 className="text-2xl sm:text-3xl font-display font-medium text-gray-900 mb-2">
-            BuyWhoa
+          <h1 className="text-2xl sm:text-3xl font-medium text-gray-900 mb-2">
+            Expert-Curated Products That <span className="text-blue-600">Last a Lifetime</span>
           </h1>
           <p className="text-base sm:text-lg text-gray-600">
-            Expert-curated recommendations for products that truly last a lifetime
+            Discover items so well-made, you'll <span className="text-blue-600 font-medium">only need to buy them once</span>
           </p>
         </header>
 
         <article className="prose text-sm sm:text-base text-gray-600">
           <p>
-            We meticulously research and test products to find items that are built to last. 
+            We meticulously research and test products to find items that are <span className="text-blue-600 font-medium">built to last</span>. 
             Our recommendations focus on quality, durability, and long-term value — because 
             the best products are the ones you only need to buy once.
           </p>
@@ -195,31 +195,36 @@ export default function HomePage() {
           </p>
         </section>
 
-        <section className="bg-blue-50 border border-blue-100 rounded-lg p-3 text-sm text-blue-900" aria-labelledby="promise-heading">
-          <h2 id="promise-heading" className="font-medium mb-2">Our Promise to You</h2>
-          <ul className="space-y-2">
-            <li className="flex gap-2">
-              <svg className="w-4 h-4 text-blue-500 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+        <section className="bg-blue-50 border border-blue-100 rounded-lg p-4 text-sm text-blue-900" aria-labelledby="promise-heading">
+          <h2 id="promise-heading" className="font-medium mb-3 flex items-center gap-2">
+            <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            Our Promise to You
+          </h2>
+          <ul className="space-y-3">
+            <li className="flex gap-3 items-start">
+              <svg className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
               </svg>
               <span>
-                <strong>100% Independent:</strong> We never accept payment or free products from manufacturers
+                <strong className="text-blue-700">100% Independent:</strong> We never accept payment or free products from manufacturers
               </span>
             </li>
-            <li className="flex gap-2">
-              <svg className="w-4 h-4 text-blue-500 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            <li className="flex gap-3 items-start">
+              <svg className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
               </svg>
               <span>
-                <strong>Thorough Research:</strong> Based on user experiences, expert reviews, and reliability data
+                <strong className="text-blue-700">Thorough Research:</strong> Based on user experiences, expert reviews, and reliability data
               </span>
             </li>
-            <li className="flex gap-2">
-              <svg className="w-4 h-4 text-blue-500 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            <li className="flex gap-3 items-start">
+              <svg className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span>
-                <strong>Transparent Process:</strong> Clear explanations for why each product is BuyWhoa-worthy
+                <strong className="text-blue-700">Transparent Process:</strong> Clear explanations for why each product is BuyWhoa-worthy
               </span>
             </li>
           </ul>
