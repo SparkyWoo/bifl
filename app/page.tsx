@@ -38,7 +38,7 @@ export default function HomePage() {
             </div>
             {/* New York Times */}
             <div className="grayscale opacity-60 hover:opacity-100 transition-opacity">
-              <svg className="h-6" viewBox="0 0 379 64" fill="currentColor">
+              <svg className="h-8" viewBox="0 0 379 64" fill="currentColor">
                 <path d="M30.8 13.4C30.8 5.9 23.9 0 15.4 0 6.9 0 0 5.9 0 13.4s6.9 13.4 15.4 13.4c8.5 0 15.4-5.9 15.4-13.4zm99 41.9h8.5V19.6h-8.5v35.7zM354.5 19.6h-8.5v35.7h8.5V19.6zm-282.9 0h-8.8l-14.9 35.7h8.4l3.3-8.2h15.2l3.3 8.2h8.4l-14.9-35.7zm-9.2 20.5l5-12.4h.1l4.9 12.4h-10zm201.4-20.5h-8.8l-14.9 35.7h8.4l3.3-8.2h15.2l3.3 8.2h8.4l-14.9-35.7zm-9.2 20.5l5-12.4h.1l4.9 12.4h-10zm-128.6-20.5h-8.8l-14.9 35.7h8.4l3.3-8.2h15.2l3.3 8.2h8.4l-14.9-35.7zm-9.2 20.5l5-12.4h.1l4.9 12.4h-10zm63.8-20.5h-8.8l-14.9 35.7h8.4l3.3-8.2h15.2l3.3 8.2h8.4l-14.9-35.7zm-9.2 20.5l5-12.4h.1l4.9 12.4h-10zm128.6-20.5h-8.8l-14.9 35.7h8.4l3.3-8.2h15.2l3.3 8.2h8.4l-14.9-35.7zm-9.2 20.5l5-12.4h.1l4.9 12.4h-10z"/>
               </svg>
               <span className="sr-only">The New York Times</span>
