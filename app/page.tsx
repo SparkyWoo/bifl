@@ -10,7 +10,7 @@ export default function HomePage() {
             Expert-Curated Products That <span className="text-blue-600">Last a Lifetime</span>
           </h1>
           <p className="text-base sm:text-lg text-gray-600">
-            Discover items so well-made, you'll <span className="text-blue-600 font-medium">only need to buy them once</span>
+            Discover items so well-made, you&apos;ll <span className="text-blue-600 font-medium">only need to buy them once</span>
           </p>
         </header>
 
