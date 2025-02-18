@@ -152,9 +152,8 @@ export default function HomePage() {
             </div>
             {/* DeepMind */}
             <div className="grayscale opacity-60 hover:opacity-100 transition-opacity">
-              <svg className="h-8" viewBox="0 0 2201 363">
-                <style>{`.a{fill:#ff4500;}.b{fill:#222;}`}</style>
-                <g transform="matrix(1.56256,0,0,1.56256,-311.225,1.5989e-14)">
+              <svg className="h-8" viewBox="0 0 2201 363" fill="currentColor">
+                <g transform="matrix(1.56256,0,0,1.56256,-311.225,0)">
                   <path d="M39.4 10.6h8.2v2.3h-5.5v3.3h5.2v2.3h-5.2v3.4h5.7v2.3h-8.4V10.6zm11.5 0h2.7v11.3h5.5v2.3H50.9V10.6zm10.3 0h8.2v2.3h-5.5v3.3h5.2v2.3h-5.2v3.4h5.7v2.3h-8.4V10.6zm11.5 0h4.4c4.1 0 6.3 2.5 6.3 6.8 0 4.3-2.2 6.8-6.3 6.8h-4.4V10.6zm4.4 11.3c2.4 0 3.6-1.5 3.6-4.5s-1.2-4.5-3.6-4.5h-1.7v9h1.7zm9.1-11.3h2.7v13.6h-2.7V10.6zm6.1 0h2.9l5.5 9.1V10.6h2.5v13.6h-2.7l-5.7-9.3v9.3h-2.5V10.6zm14.2 0h2.7v11.3h5.5v2.3h-8.2V10.6zm11.5 0h2.7v13.6h-2.7V10.6zm6.1 0h3.1l2.4 9.8 2.4-9.8h2.6l2.4 9.8 2.4-9.8h3l-3.8 13.6h-2.9L132 14.5l-2.4 9.7h-2.9l-3.8-13.6zm19.9 0h8.2v2.3h-5.5v3.3h5.2v2.3h-5.2v3.4h5.7v2.3h-8.4V10.6z"/>
                   <path fillRule="evenodd" clipRule="evenodd" d="M16 0L0 9.2v13.6L16 32l16-9.2V9.2L16 0zm0 2.8l13.7 7.9-5.9 3.4-7.8-4.5-7.8 4.5-5.9-3.4L16 2.8zm0 20.9l-7.8-4.5v-9l7.8 4.5 7.8-4.5v9l-7.8 4.5z"/>
                 </g>
