@@ -50,8 +50,8 @@ export default function RootLayout({
       <body className="min-h-screen bg-gray-50 text-gray-900 text-sm">
         <div className="min-h-screen flex flex-col">
           <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
-            <div className="mx-auto px-4 py-3 flex items-center justify-between">
-              <h1 className="text-lg font-display tracking-tight text-gray-900">
+            <div className="mx-auto px-4 py-4 flex items-center justify-between">
+              <h1 className="text-2xl font-display font-semibold tracking-tight text-gray-900">
                 <Link href="/" className="hover:text-gray-600 transition-colors">
                   BuyWhoa
                 </Link>
