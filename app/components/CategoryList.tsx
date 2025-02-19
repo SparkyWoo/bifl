@@ -81,6 +81,7 @@ export function CategoryListClient({ categories }: { categories: Category[] }) {
           ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
           sm:translate-x-0 transition-transform duration-300 ease-in-out
           border-r border-gray-200 bg-white flex flex-col
+          sm:h-auto h-[100dvh]
         `}
       >
         {/* Search Input - Fixed at Top */}
@@ -95,15 +96,15 @@ export function CategoryListClient({ categories }: { categories: Category[] }) {
         </div>
 
         {/* Scrollable Category List */}
-        <div className="flex-1 overflow-y-auto overscroll-contain">
-          <ul className="py-1">
+        <div className="flex-1 overflow-y-auto overscroll-contain -mx-0.5 px-0.5">
+          <ul className="py-0.5">
             {filteredCategories.map((category) => {
               const isActive = pathname === `/categories/${category.id}`
               return (
                 <li key={category.id}>
                   <Link
                     href={`/categories/${category.id}`}
-                    className={`block px-2 py-1.5 text-sm truncate transition-colors ${
+                    className={`block px-2 py-1 text-sm truncate transition-colors ${
                       isActive 
                         ? 'bg-blue-50 text-blue-600 font-medium' 
                         : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
