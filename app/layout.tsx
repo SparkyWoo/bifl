@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
@@ -8,6 +8,11 @@ import Link from "next/link";
 import { CategoryListClient } from "./components/CategoryList";
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   title: 'BuyWhoa - Expert-Curated Lifetime Products',
@@ -28,10 +33,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
   },
 }
 
