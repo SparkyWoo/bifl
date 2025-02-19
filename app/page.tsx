@@ -29,15 +29,15 @@ export default function HomePage() {
               Research Backed By Trusted Sources
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 items-center justify-items-center px-2 md:px-0">
             {/* Reddit */}
-            <div className="grayscale opacity-60 hover:opacity-100 transition-opacity">
-              <RedditLogo className="h-8" />
+            <div className="grayscale opacity-60 hover:opacity-100 transition-opacity w-full flex justify-center">
+              <RedditLogo className="h-6 md:h-8" />
               <span className="sr-only">Reddit</span>
             </div>
             {/* New York Times */}
-            <div className="grayscale opacity-60 hover:opacity-100 transition-opacity">
-              <svg className="h-8" viewBox="0 0 379 64" fill="currentColor">
+            <div className="grayscale opacity-60 hover:opacity-100 transition-opacity w-full flex justify-center">
+              <svg className="h-6 md:h-8" viewBox="0 0 379 64" fill="currentColor">
                 <path fill="#1A1A1A" d="M30.8,15.7c0-4.1-3.9-5.4-7.2-5.3v0.4c2,0.2,3.5,1,3.5,2.3c0,0.9-0.7,2.1-2.6,2.1c-1.6,0-4.1-0.9-6.6-1.7
                   c-2.7-0.9-5.2-1.8-7.3-1.8c-4.1,0-7.3,3.1-7.3,6.9c0,3.1,2.4,4.1,3.3,4.5l0.1-0.2c-0.6-0.4-1-0.9-1-2.2c0-1.1,0.8-2.6,2.9-2.6
                   c1.9,0,4.4,0.9,7.8,1.8c2.9,0.8,6,1.6,7.7,1.8v6.7l-3.2,2.7l3.2,2.8v9.2c-1.7,1-3.6,1.3-5.3,1.3c-3.1,0-5.9-0.9-8.2-3.4l8.7-4.2
@@ -90,8 +90,8 @@ export default function HomePage() {
               <span className="sr-only">The New York Times</span>
             </div>
             {/* Consumer Reports */}
-            <div className="grayscale opacity-60 hover:opacity-100 transition-opacity">
-              <svg className="h-8" viewBox="0 0 684 180" fill="currentColor">
+            <div className="grayscale opacity-60 hover:opacity-100 transition-opacity w-full flex justify-center">
+              <svg className="h-6 md:h-8" viewBox="0 0 684 180" fill="currentColor">
                 <style type="text/css">
                   {`.st0{fill:#00AE4D;}`}
                 </style>
@@ -151,8 +151,8 @@ export default function HomePage() {
               <span className="sr-only">Consumer Reports</span>
             </div>
             {/* DeepMind */}
-            <div className="grayscale opacity-60 hover:opacity-100 transition-opacity">
-              <svg className="h-8" viewBox="0 0 2201 363" fill="currentColor">
+            <div className="grayscale opacity-60 hover:opacity-100 transition-opacity w-full flex justify-center">
+              <svg className="h-6 md:h-8" viewBox="0 0 2201 363" fill="currentColor">
                 <g transform="matrix(1.56256,0,0,1.56256,-311.225,0)">
                   <g transform="matrix(0.921231,0,0,0.921231,314.33,116.846)">
                     <g transform="matrix(1,0,0,1,-125,-125)">
@@ -198,8 +198,10 @@ export default function HomePage() {
         <section className="bg-blue-50 border border-blue-100 rounded-lg p-4 text-sm text-blue-900" aria-labelledby="promise-heading">
           <h2 id="promise-heading" className="font-medium mb-3 flex items-center gap-2">
             <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 77.9,77.9c21,0,39.8-8.4,54.1-21.8V157.8z M108.4,109.6c-7.1,7.1-16.9,11.5-27.7,11.5c-21.4,0-38.9-17.5-38.9-38.9
+                      c0-21.4,17.5-38.9,38.9-38.9c10.8,0,20.5,4.3,27.7,11.5l26.4-26.4V136L108.4,109.6z M173.7,75.6V40.4h21.2c9.7,0,17.7,8,17.7,17.7
+                      c0,9.7-8,17.5-17.7,17.5H173.7z"/>
+                    </svg>
             Our Promise to You
           </h2>
           <ul className="space-y-3">
