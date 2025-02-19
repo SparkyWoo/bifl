@@ -39,6 +39,18 @@ export function CategoryListClient({ categories }: { categories: Category[] }) {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  // Prevent body scroll when drawer is open on mobile
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen])
+
   return (
     <>
       {/* Mobile Menu Toggle */}
@@ -68,41 +80,42 @@ export function CategoryListClient({ categories }: { categories: Category[] }) {
           fixed sm:static inset-y-0 left-0 z-40 w-64 sm:w-48 transform 
           ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
           sm:translate-x-0 transition-transform duration-300 ease-in-out
-          border-r border-gray-200 bg-white
+          border-r border-gray-200 bg-white flex flex-col
         `}
       >
-        <div className="sticky top-0">
-          <div className="p-2 border-b border-gray-200 bg-gray-50">
-            <input
-              type="search"
-              placeholder="Filter categories..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-2 py-1 text-sm bg-white border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
-            />
-          </div>
-          <div className="h-[calc(100vh-8rem)] overflow-y-auto">
-            <ul className="py-1">
-              {filteredCategories.map((category) => {
-                const isActive = pathname === `/categories/${category.id}`
-                return (
-                  <li key={category.id}>
-                    <Link
-                      href={`/categories/${category.id}`}
-                      className={`block px-2 py-1 text-sm truncate transition-colors ${
-                        isActive 
-                          ? 'bg-blue-50 text-blue-600 font-medium' 
-                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                      }`}
-                      title={category.title}
-                    >
-                      {category.title}
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
+        {/* Search Input - Fixed at Top */}
+        <div className="p-2 border-b border-gray-200 bg-gray-50">
+          <input
+            type="search"
+            placeholder="Filter categories..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full px-2 py-1 text-sm bg-white border border-gray-200 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* Scrollable Category List */}
+        <div className="flex-1 overflow-y-auto overscroll-contain">
+          <ul className="py-1">
+            {filteredCategories.map((category) => {
+              const isActive = pathname === `/categories/${category.id}`
+              return (
+                <li key={category.id}>
+                  <Link
+                    href={`/categories/${category.id}`}
+                    className={`block px-2 py-1.5 text-sm truncate transition-colors ${
+                      isActive 
+                        ? 'bg-blue-50 text-blue-600 font-medium' 
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                    }`}
+                    title={category.title}
+                  >
+                    {category.title}
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </nav>
     </>
