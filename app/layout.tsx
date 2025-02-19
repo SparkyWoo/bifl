@@ -49,7 +49,7 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body className="min-h-screen bg-gray-50 text-gray-900 text-sm">
         <div className="min-h-screen flex flex-col">
-          <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+          <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
             <div className="mx-auto px-4 py-4 flex items-center justify-between">
               <h1 className="text-2xl font-display font-semibold tracking-tight text-gray-900">
                 <Link href="/" className="hover:text-gray-600 transition-colors">
@@ -64,10 +64,10 @@ export default function RootLayout({
               </Link>
             </div>
           </header>
-          <div className="flex-1 flex">
+          <div className="flex-1 flex relative">
             <CategoryList />
-            <main className="flex-1 min-h-[calc(100vh-8.5rem)]">
-              <div className="p-6">
+            <main className="flex-1 min-h-[calc(100vh-8.5rem)] w-full">
+              <div className="p-4 sm:p-6">
                 {children}
               </div>
             </main>
