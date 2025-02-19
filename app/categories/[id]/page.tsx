@@ -135,7 +135,16 @@ async function WhyBiflContent({ content }: { content: string }) {
     source: content,
     components
   })
-  return <div className="text-sm text-gray-600 prose prose-sm max-w-none">{renderedContent}</div>
+  return (
+    <div className="group relative">
+      <div className="text-sm text-gray-600 prose prose-sm max-w-none overflow-hidden">
+        <div className="sm:max-h-[2.5em] sm:line-clamp-2 group-hover:max-h-none group-hover:line-clamp-none transition-all duration-200">
+          {renderedContent}
+        </div>
+      </div>
+      <div className="hidden sm:block absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white opacity-100 group-hover:opacity-0 transition-opacity duration-200 pointer-events-none"></div>
+    </div>
+  )
 }
 
 export default async function Page({ params }: PageProps) {
