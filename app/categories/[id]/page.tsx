@@ -142,7 +142,6 @@ async function WhyBiflContent({ content }: { content: string }) {
           {renderedContent}
         </div>
       </div>
-      <div className="hidden sm:block absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white opacity-100 group-hover:opacity-0 transition-opacity duration-200 pointer-events-none"></div>
     </div>
   )
 }
