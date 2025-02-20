@@ -279,19 +279,19 @@ export default async function Page({ params }: PageProps) {
         {/* Desktop Product Table */}
         <div className="hidden sm:block bg-white border border-gray-200 rounded-lg overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full divide-y divide-gray-200">
+            <table className="w-full divide-y divide-gray-200 text-sm">
               <thead className="bg-gray-50">
                 <tr>
-                  <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-2 py-1.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Product
                   </th>
-                  <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-32">
+                  <th scope="col" className="px-2 py-1.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-28">
                     Price
                   </th>
-                  <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-2 py-1.5 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Why It&apos;s BuyWhoa
                   </th>
-                  <th scope="col" className="relative px-3 py-2 w-20">
+                  <th scope="col" className="relative px-2 py-1.5 w-16">
                     <span className="sr-only">Shop</span>
                   </th>
                 </tr>
@@ -299,29 +299,29 @@ export default async function Page({ params }: PageProps) {
               <tbody className="bg-white divide-y divide-gray-200">
                 {content.products?.map((product) => (
                   <tr key={product.name} className="hover:bg-gray-50">
-                    <td className="px-3 py-2">
-                      <div className="font-medium text-gray-900">{product.name}</div>
+                    <td className="px-2 py-1.5">
+                      <div className="text-sm font-medium text-gray-900">{product.name}</div>
                     </td>
-                    <td className="px-3 py-2 whitespace-nowrap">
-                      <div className="text-sm">
+                    <td className="px-2 py-1.5 whitespace-nowrap">
+                      <div className="text-xs">
                         <span className="font-medium text-blue-600">{product.priceTier}</span>
-                        <span className="text-xs text-gray-500 ml-1.5">
+                        <span className="text-xs text-gray-500 ml-1">
                           {product.priceRange}
                         </span>
                       </div>
                     </td>
-                    <td className="px-3 py-2">
+                    <td className="px-2 py-1.5">
                       <WhyBiflContent content={product.whyBiflContent} />
                     </td>
-                    <td className="px-3 py-2 text-right">
+                    <td className="px-2 py-1.5 text-right">
                       <a 
                         href={product.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-2.5 py-1.5 text-sm font-medium text-blue-600 hover:text-blue-700"
+                        className="inline-flex items-center px-2 py-1 text-xs font-medium text-blue-600 hover:text-blue-700"
                       >
-                        Shop Now
-                        <svg className="ml-1 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                        Shop
+                        <svg className="ml-1 w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
                           <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" />
                         </svg>
                       </a>
