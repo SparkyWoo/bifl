@@ -81,11 +81,11 @@ export function CategoryListClient({ categories }: { categories: Category[] }) {
           ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
           sm:translate-x-0 transition-transform duration-300 ease-in-out
           border-r border-gray-200 bg-white flex flex-col
-          sm:h-auto h-[100dvh]
+          sm:h-auto h-[100dvh] pt-safe-top
         `}
       >
         {/* Search Input - Fixed at Top */}
-        <div className="p-2 border-b border-gray-200 bg-gray-50">
+        <div className="sticky top-0 p-2 border-b border-gray-200 bg-gray-50">
           <input
             type="search"
             placeholder="Filter categories..."
