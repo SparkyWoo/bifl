@@ -2,15 +2,32 @@ import { MetadataRoute } from 'next'
 
 export const dynamic = 'force-static'
 
+const baseUrl = 'https://buywhoa.com'
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
-        disallow: ['/private/', '/admin/'],
+        allow: [
+          '/',
+          '/categories/*',
+          '/about',
+        ],
+        disallow: [
+          '/private/',
+          '/admin/',
+          '/*.json$',
+          '/*_next/*',
+          '/api/*',
+        ],
+      },
+      {
+        userAgent: 'GPTBot',
+        disallow: ['/'],
       },
     ],
-    sitemap: 'https://buywhoa.com/sitemap.xml',
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   }
 } 
