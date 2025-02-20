@@ -18,17 +18,30 @@ export const metadata: Metadata = {
   title: 'BuyWhoa - Expert-Curated Lifetime Products',
   description: 'Expert-curated recommendations for products that truly last a lifetime. We research and test products to find items built to last, focusing on quality, durability, and long-term value.',
   keywords: ['lifetime products', 'durable goods', 'product recommendations', 'quality items', 'long-lasting products'],
+  metadataBase: new URL('https://buywhoa.com'),
   openGraph: {
     title: 'BuyWhoa - Expert-Curated Lifetime Products',
     description: 'Expert-curated recommendations for products that truly last a lifetime.',
     url: 'https://buywhoa.com',
     siteName: 'BuyWhoa',
     type: 'website',
+    images: [{
+      url: '/api/og',
+      width: 1200,
+      height: 630,
+      alt: 'BuyWhoa - Expert-Curated Lifetime Products'
+    }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'BuyWhoa - Expert-Curated Lifetime Products',
     description: 'Expert-curated recommendations for products that truly last a lifetime.',
+    images: [{
+      url: '/api/og',
+      width: 1200,
+      height: 630,
+      alt: 'BuyWhoa - Expert-Curated Lifetime Products'
+    }],
   },
   robots: {
     index: true,
