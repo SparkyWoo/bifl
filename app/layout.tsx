@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: 'BuyWhoa',
     type: 'website',
     images: [{
-      url: '/api/og',
+      url: '/api/og?title=BuyWhoa&description=Expert-Curated%20Lifetime%20Products',
       width: 1200,
       height: 630,
       alt: 'BuyWhoa - Expert-Curated Lifetime Products'
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: 'BuyWhoa - Expert-Curated Lifetime Products',
     description: 'Expert-curated recommendations for products that truly last a lifetime.',
     images: [{
-      url: '/api/og',
+      url: '/api/og?title=BuyWhoa&description=Expert-Curated%20Lifetime%20Products',
       width: 1200,
       height: 630,
       alt: 'BuyWhoa - Expert-Curated Lifetime Products'
