@@ -227,35 +227,109 @@ export default async function Page({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productsJsonLd) }}
       />
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="space-y-8">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">{content.title}</h1>
-            <p className="mt-2 text-lg text-gray-600">{content.description}</p>
-          </div>
+      <div className="space-y-6 px-4 sm:px-6 py-4 sm:py-6">
+        <div className="space-y-2">
+          <h1 className="text-xl sm:text-2xl font-medium text-gray-900">{content.title}</h1>
+          <p className="text-sm text-gray-600">{content.description}</p>
+          <p className="text-xs text-gray-500">
+            Last updated: {new Date(content.lastUpdated).toLocaleDateString()}
+          </p>
+        </div>
 
-          <div className="space-y-6">
-            {content.products.map((product, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-sm p-6 space-y-4">
-                <div className="flex justify-between items-start">
-                  <h2 className="text-xl font-semibold text-gray-900">{product.name}</h2>
-                  <div className="text-sm font-medium text-gray-500">
-                    {product.priceRange}
+        {/* Mobile Product List */}
+        <div className="block sm:hidden space-y-4">
+          {content.products?.map((product) => (
+            <div key={product.name} className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+              <div className="p-4">
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-medium text-gray-900 text-base">{product.name}</h3>
+                  <div className="flex flex-col items-end gap-0.5 shrink-0">
+                    <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-blue-700 bg-blue-50 rounded-full">
+                      {product.priceTier}
+                    </span>
+                    <span className="text-xs text-gray-500">
+                      {product.priceRange}
+                    </span>
                   </div>
                 </div>
-                <WhyBiflContent content={product.whyBiflContent} />
-                <div className="flex justify-end">
+                
+                <div className="mt-3">
+                  <h4 className="text-xs font-medium text-gray-500 mb-1">Why It&apos;s BuyWhoa:</h4>
+                  <WhyBiflContent content={product.whyBiflContent} />
+                </div>
+                
+                <div className="mt-4 pt-3 border-t border-gray-100">
                   <a
                     href={product.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="inline-flex w-full items-center justify-center px-4 py-2.5 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
                   >
-                    View on Amazon
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    Shop Now
                   </a>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Product Table */}
+        <div className="hidden sm:block bg-white border border-gray-200 rounded-lg overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Product
+                  </th>
+                  <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-32">
+                    Price
+                  </th>
+                  <th scope="col" className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Why It&apos;s BuyWhoa
+                  </th>
+                  <th scope="col" className="relative px-3 py-2 w-20">
+                    <span className="sr-only">Shop</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {content.products?.map((product) => (
+                  <tr key={product.name} className="hover:bg-gray-50">
+                    <td className="px-3 py-2">
+                      <div className="font-medium text-gray-900">{product.name}</div>
+                    </td>
+                    <td className="px-3 py-2 whitespace-nowrap">
+                      <div className="text-sm">
+                        <span className="font-medium text-blue-600">{product.priceTier}</span>
+                        <span className="text-xs text-gray-500 ml-1.5">
+                          {product.priceRange}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="px-3 py-2">
+                      <WhyBiflContent content={product.whyBiflContent} />
+                    </td>
+                    <td className="px-3 py-2 text-right">
+                      <a 
+                        href={product.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-2.5 py-1.5 text-sm font-medium text-blue-600 hover:text-blue-700"
+                      >
+                        Shop Now
+                        <svg className="ml-1 w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" />
+                        </svg>
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
