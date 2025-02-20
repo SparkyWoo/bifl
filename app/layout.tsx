@@ -6,6 +6,7 @@ import './globals.css'
 import { getAllCategories } from "./lib/categories";
 import Link from "next/link";
 import { CategoryListClient } from "./components/CategoryList";
+import { GoogleAnalytics } from './components/GoogleAnalytics'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -61,6 +62,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body className="min-h-screen bg-gray-50 text-gray-900 text-sm">
         <div className="min-h-screen flex flex-col">
           <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
