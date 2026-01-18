@@ -61,6 +61,35 @@ export default function AboutPage() {
         </div>
 
         <div className="space-y-4">
+          <h2 className="text-xl font-medium text-gray-900">Research Tools We Use</h2>
+          <div className="space-y-4 text-gray-600">
+            <p>
+              To ensure our recommendations are based on authentic feedback, we utilize several verification tools:
+            </p>
+            <ul className="space-y-3 list-disc pl-5">
+              <li>
+                <strong className="text-gray-900">
+                  <a
+                    href="https://ratebud.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 hover:underline"
+                  >
+                    RateBud
+                  </a>
+                </strong>: Amazon review authenticity analyzer that helps us filter out products with potentially fake or manipulated reviews.
+              </li>
+              <li>
+                <strong className="text-gray-900">Community Forums:</strong> Long-term user reports from Reddit, specialized forums, and product enthusiast communities.
+              </li>
+              <li>
+                <strong className="text-gray-900">Professional Testing:</strong> Data from reputable testing labs and industry expert evaluations.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="space-y-4">
           <h2 className="text-xl font-medium text-gray-900">Price Tiers</h2>
           <p className="text-gray-600">
             We organize products into clear price tiers to help you find quality items within your budget. While higher prices often correlate with better durability, we actively seek out exceptional value at every price point.

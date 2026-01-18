@@ -74,8 +74,8 @@ export default function RootLayout({
                   BuyWhoa
                 </Link>
               </h1>
-              <Link 
-                href="/about" 
+              <Link
+                href="/about"
                 className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
               >
                 About
@@ -97,6 +97,16 @@ export default function RootLayout({
                 <br />
                 <span className="mt-1 block">
                   This site contains affiliate links. We may earn a commission when you purchase through these links.
+                </span>
+                <span className="mt-2 block">
+                  <a
+                    href="https://ratebud.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    Check Amazon Review Authenticity →
+                  </a>
                 </span>
               </p>
             </div>
